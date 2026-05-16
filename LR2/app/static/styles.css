@@ -1,0 +1,23 @@
+body {
+    font-size: 1.25rem;
+}
+
+.avatar {
+    max-width: 100%;
+}
+
+.comment-item {
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.comment-reply {
+    margin-left: 2.5rem;
+}
+
+.comment-avatar {
+    width: 56px;
+    height: 56px;
+    object-fit: cover;
+}

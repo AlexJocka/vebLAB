@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Параметры URL</h1>
+
+{% if url_params %}
+<ul class="list-group">
+  {% for key, value in url_params.items() %}
+  <li class="list-group-item"><strong>{{ key }}:</strong> {{ value }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="alert alert-secondary mb-0">Параметры URL отсутствуют.</div>
+{% endif %}
+{% endblock %}

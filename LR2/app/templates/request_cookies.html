@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Cookie</h1>
+
+{% if cookies %}
+<ul class="list-group">
+  {% for key, value in cookies.items() %}
+  <li class="list-group-item"><strong>{{ key }}:</strong> {{ value }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<div class="alert alert-secondary mb-0">Cookie отсутствуют.</div>
+{% endif %}
+{% endblock %}
