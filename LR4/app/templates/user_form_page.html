@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% from 'form_macros.html' import user_form %}
+
+{% block content %}
+<h1 class="mb-4">{{ title }}</h1>
+
+<div class="form-panel">
+  {{ user_form(request.path, roles, form_data, errors, mode) }}
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+body {
+    font-size: 1rem;
+}
+
+.form-panel {
+    max-width: 720px;
+}
+
+.detail-table th {
+    width: 220px;
+}
