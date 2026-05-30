@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-3">Лабораторная работа №3</h1>
+{% if current_user.is_authenticated %}
+<p class="lead">Вы вошли как <strong>{{ current_user.login }}</strong>.</p>
+{% else %}
+<p class="lead">Вы не аутентифицированы.</p>
+{% endif %}
+<ul>
+  <li><a href="{{ url_for('counter') }}">Страница "Счётчик посещений"</a></li>
+  <li><a href="{{ url_for('login') }}">Страница входа</a></li>
+  {% if current_user.is_authenticated %}
+  <li><a href="{{ url_for('secret') }}">Секретная страница</a></li>
+  {% endif %}
+</ul>
+{% endblock %}
