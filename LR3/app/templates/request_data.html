@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="mb-4">Отображение данных запроса</h1>
+
+<div class="row g-4">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Параметры URL</h5>
+        {% if url_params %}
+        <ul class="list-group list-group-flush">
+          {% for key, value in url_params.items() %}
+          <li class="list-group-item"><strong>{{ key }}:</strong> {{ value }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="mb-0 text-muted">Параметры URL отсутствуют.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Cookie</h5>
+        {% if request_cookies %}
+        <ul class="list-group list-group-flush">
+          {% for key, value in request_cookies.items() %}
+          <li class="list-group-item"><strong>{{ key }}:</strong> {{ value }}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="mb-0 text-muted">Cookie отсутствуют.</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Заголовки запроса</h5>
+        <ul class="list-group list-group-flush">
+          {% for key, value in request_headers.items() %}
+          <li class="list-group-item"><strong>{{ key }}:</strong> {{ value }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Форма авторизации</h5>
+        <form method="post">
+          <div class="mb-3">
+            <label for="login" class="form-label">Логин</label>
+            <input type="text" class="form-control" id="login" name="login" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Пароль</label>
+            <input type="password" class="form-control" id="password" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Отправить</button>
+        </form>
+
+        {% if auth_data %}
+        <hr>
+        <h6>Параметры формы:</h6>
+        <p class="mb-1"><strong>Логин:</strong> {{ auth_data.login }}</p>
+        <p class="mb-0"><strong>Пароль:</strong> {{ auth_data.password }}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

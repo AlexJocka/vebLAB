@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-6 col-lg-4">
+    <h1 class="mb-3">Вход</h1>
+    <form method="post">
+      <div class="mb-3">
+        <label for="username" class="form-label">Логин</label>
+        <input type="text" class="form-control" id="username" name="username" value="{{ username or '' }}" required>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Пароль</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+      </div>
+      <div class="form-check mb-3">
+        <input class="form-check-input" type="checkbox" id="remember" name="remember">
+        <label class="form-check-label" for="remember">Запомнить меня</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Войти</button>
+    </form>
+    <p class="mt-3 mb-0 text-muted">Тестовый пользователь: user / qwerty</p>
+  </div>
+</div>
+{% endblock %}
