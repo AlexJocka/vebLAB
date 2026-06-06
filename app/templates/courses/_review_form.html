@@ -1,0 +1,36 @@
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title mb-3">Ваш отзыв</h4>
+
+        {% if current_user.is_authenticated %}
+            {% if current_review %}
+                <div class="border rounded p-3 bg-light">
+                    <p class="mb-1"><strong>Оценка:</strong> {{ current_review.rating }}/5</p>
+                    <p class="text-muted mb-2">{{ current_review.created_at.strftime('%d.%m.%Y %H:%M') }}</p>
+                    <p class="mb-0">{{ current_review.text }}</p>
+                </div>
+            {% else %}
+                <form method="post" action="{{ url_for('courses.create_review', course_id=course.id) }}">
+                    <div class="mb-3">
+                        <label for="rating" class="form-label">Оценка</label>
+                        <select class="form-select" id="rating" name="rating">
+                            {% for value, label in rating_options %}
+                                <option value="{{ value }}" {% if value == 5 %}selected{% endif %}>{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="text" class="form-label">Текст отзыва</label>
+                        <textarea class="form-control" id="text" name="text" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Оставить отзыв</button>
+                </form>
+            {% endif %}
+        {% else %}
+            <p class="mb-0">
+                Чтобы оставить отзыв, нужно
+                <a href="{{ url_for('auth.login') }}">войти в систему</a>.
+            </p>
+        {% endif %}
+    </div>
+</div>
